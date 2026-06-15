@@ -1,0 +1,140 @@
+<html>
+    <title>Sample web page</title>
+    <style>
+        *{
+            font-family:cursive;
+        }
+        
+        header,footer{
+            background-color: deeppink;
+            padding: 10px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        input, textarea{
+            margin: 10px;
+            padding: 10px;
+            border-style:ridge;
+            border-radius: 5px;
+            border-color: blue;
+        }
+        label{
+            color:darkred;
+        }
+        .container{
+            display:flex;
+            background-color: blue;
+            justify-content: space-around;
+        }
+        .container1{
+            display:grid;
+            grid-template-columns: auto auto;
+            padding: 10px;
+            background-color: blue;
+            justify-content: space-around;
+        }
+        .container div{
+            padding: 10px;
+        }
+        .container1 div{
+            padding: 10px;
+            margin: 20px;
+            background-color: lightgreen;
+        }
+
+        
+</style>
+<body bgcolor="lightpink">
+    <header>
+        SUPER BIKES
+    </header>
+    <h1 class="name">🤩About the SuperBikes</h1>
+    <p style="font-size: large;"> Superbikes are high-performance motorcycles designed for speed, agility, and advanced handling, often used in professional racing and by enthusiasts who crave adrenaline on the road. Unlike regular commuter bikes, superbikes feature powerful engines—often exceeding 1000cc—lightweight frames, aerodynamic designs, and advanced braking systems. They are inspired by racing technology, with models from brands like Ducati, Yamaha, Kawasaki, and BMW dominating both the track and the streets. While they offer thrilling performance, superbikes also demand skilled handling and strict adherence to safety measures due to their immense power.</p>
+
+    <form>
+        <label>Name:</label><br>
+        <input type="text" placeholder="Your Name"/>
+        <br>
+        <label>Contact:</label><br>
+        <input type="number" placeholder="Mobile Number"/>
+        <br>
+        <label>Email:</label><br>
+        <input type="email" placeholder="Your mail id"/>
+        <br>
+        <label>Address:</label><br>
+        <textarea></textarea>
+        <br>
+        <label>DOB:</label><br>
+        <input type="date" width="185" placeholder="Date of Birth"/>
+        <br>
+        
+    </form>
+    <h2>Gallery:</h2>
+    <div class="container">
+        <div><img src="https://th.bing.com/th/id/R.037262b09f0df0d4053a18da8756db85?rik=lWCE4txv8jGr0w&riu=http%3a%2f%2fwebneel.com%2fwallpaper%2fsites%2fdefault%2ffiles%2fimages%2f01-2014%2f2-flower-wallpaper.jpg&ehk=UZa7LU1Kw2xiBaNXN0dY7cGdfiPcLFcz7RJarDWE2SY%3d&risl=&pid=ImgRaw&r=0" width="240" height="240"></div>
+        <div><img src="https://tse1.mm.bing.net/th/id/OIP.99iB30OaymYQJZJbDhpYgwHaE7?cb=thfvnextfalcon&rs=1&pid=ImgDetMain&o=7&rm=3" width="240" height="240"> </div>
+        <div><img src="https://images.pexels.com/photos/9611/flowers.jpg?cs=srgb&dl=pexels-free-nature-stock-9611.jpg&fm=jpg" width=auto height="240"></div>
+        <div><img src="https://tse1.mm.bing.net/th/id/OIP.ktmfTAuiYiNl4lZX4rFTwAHaFj?cb=thfvnextfalcon&rs=1&pid=ImgDetMain&o=7&rm=3" width="240" height="240"></div>
+        <div><img src="https://tse3.mm.bing.net/th/id/OIP.66gN6L2bAzea-tff1lBFuQHaE8?cb=thfvnextfalcon&rs=1&pid=ImgDetMain&o=7&rm=3" width="240" height="240"></div>
+    </div>
+    <div class="container1">
+        <div>1</div>
+        <div> 2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+    </div>
+    <br>
+    <button onclick="c()">On Click</button>
+    <button ondblclick="c1()">Double Click</button>
+    <button onmouseenter="c2()">Mouse Over</button>
+    <button oncontextmenu="c3()">Context Menu</button>
+    <button onclick="add()">Add</button>
+    <button onclick="sub()">Subtract</button>
+    <button onclick="mul()">Multiply</button>
+    <button onclick="div()">Division</button>
+    <br>
+    <br>
+    <marquee style="color: blueviolet; font-weight: 700; font-size: large;"> This is Superbike Webpage</marquee>
+    <br><br>
+    <footer>
+        &copy All rights reserved
+    </footer>
+</body>
+<script>
+    function c(){
+        alert('You clicked the button one time');
+    }
+    function c1(){
+        alert('You clicked the button twice');
+    }
+    function c2(){
+        alert('You moved the mouse over the button');
+    }
+    function c3(){
+        alert('Right click is detected');
+    }
+    function add(){
+        var n1 = 20;
+        let n2 = 25;
+        const n3 = 35;
+        alert(n1+n2+n3);
+    }
+    function sub(){
+        var num1 = 100;
+        let num2 = 45;
+        alert(num1-num2);
+    }
+    function mul(){
+        var num3 = 20;
+        let num4 = 5;
+        alert(num3*num4);
+    }
+    function div(){
+        var num5 = 100;
+        let num6 = 4;
+        alert(num5/num6);
+    }
+</script>
+</html>
