@@ -1,0 +1,77 @@
+<html>
+    <header>
+        <h1 style="text-align: center;">Train Seat</h1>
+    </header>
+    <hr>
+    <body>
+        <form>
+        <label style="font-size: large;"> Seat No:</label>
+        <input type="number" id="n1" placeholder="Enter the Seat Number">
+        <button type="button" onclick="calseat()">Submit</button>
+        <br><br>
+        <!--<label style="font-size: large;"> Class:</label>
+        <input type="radio" name="anyone">
+        <label>Two AC</label>
+        <input type="radio" name="anyone">
+        <label>Three AC</label>-->
+        <h3 id="result"></h3>
+    </form>
+    <form>
+        <label style="font-size: large;"> Seat No:</label>
+        <input type="number" id="n2" placeholder="Enter the Seat Number">
+        <button type="button" onclick="calseat2()">Submit</button>
+        <br><br>
+        <!--<label style="font-size: large;"> Class:</label>
+        <input type="radio" name="anyone">
+        <label>Two AC</label>
+        <input type="radio" name="anyone">
+        <label>Three AC</label>-->
+        <h3 id="result2"></h3>
+    </form>
+
+    <script>
+        function calseat(){
+            let r=document.getElementById("n1").value
+            if(r<0 || r>80){
+                document.getElementById("result").textContent="Invalid seat number"
+            }
+            else if(r%8==1 ||r%8==4){
+                document.getElementById("result").textContent="Lower"    
+            }
+             else if(r%8==2 ||r%8==5){
+                document.getElementById("result").textContent="Middle"    
+            }
+             else if(r%8==3 ||r%8==6){
+                document.getElementById("result").textContent="Upper"    
+            }
+            else if(r%8==7){
+                document.getElementById("result").textContent="Side Lower"    
+            }
+            else{
+                document.getElementById("result").textContent="Side Upper" 
+            }
+
+        }
+         function calseat2(){
+            let r=document.getElementById("n2").value
+            if(r<0 || r>60){
+                document.getElementById("result2").textContent="Invalid seat number"
+            }
+            else if(r%6==1 ||r%6==3){
+                document.getElementById("result2").textContent="Lower"    
+            }
+           
+             else if(r%6==2 ||r%6==4){
+                document.getElementById("result2").textContent="Upper"    
+            }
+            else if(r%6==5){
+                document.getElementById("result2").textContent="Side Lower"    
+            }
+            else{
+                document.getElementById("result2").textContent="Side Upper" 
+            }
+
+        }
+    </script>
+    </body> 
+</html>
