@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coffee Order</title>
+
+    <style>
+        .container{
+            width:400px;
+            margin:50px auto;
+            padding:20px;
+            background:antiquewhite;
+            border-radius:10px;
+            box-shadow:30px 50px 50px rgba(0,0,0,0.4);
+            text-align:center;
+        }
+
+        button{
+            padding:15px 30px;
+            border-radius:30px 10px;
+            box-shadow:20px 0 20px grey;
+            cursor:pointer;
+        }
+
+        input{
+            width:250px;
+            height:40px;
+            font-size:16px;
+            padding:5px 10px;
+            border-radius:30px 10px;
+            margin:5px;
+        }
+
+        h1{
+            color:brown;
+        }
+
+        ul{
+            text-align:left;
+        }
+    </style>
+</head>
+
+<body bgcolor="#8b4513">
+
+<div class="container">
+
+    <h1><i>Coffee Shop</i></h1>
+    <form id="coffeeForm">
+    <input type="text" id="customerName" placeholder="Enter Customer Name">
+    <br><br>
+
+    <input type="text" id="coffeeType" placeholder="Enter Coffee Type">
+    <br><br>
+        <button type="submit" onclick="orderCoffee()" id="orderBtn">Order Coffee</button>
+    </form>
+
+    <h2><em>Orders</em></h2>
+
+    <ul id="ordersList"></ul>
+
+</div>
+
+<script>
+
+    let cust_id = 1;
+    const form = document.getElementById("coffeeForm");
+    const orderList = document.getElementById("ordersList");
+    // Load existing orders
+    fetch("/coffee")
+        .then(res => res.text())
+        .then(data => {
+            data.forEach(c => addOrder(c));
+        });
+
+    // Order coffee
+    form.addEventListener("submit",e=>{
+        e.preventDefault();
+        const cust = {
+            name:document.getElementById("customerName").value,
+            coffee:document.getElementById("coffeeType").value
+        };
+        fetch("/coffee",{
+            method:"POST",
+            headers:{"Content-Type":"application/json"},
+            body:JSON.stringify(cust)
+        })
+            .then(res=>res.json())
+            .then(msg => {
+                addOrder(cust);
+
+            });
+        form.reset();
+    })
+
+
+    // Add order to list
+    function addOrder(order) {
+        const li = document.createElement("li");
+        li.textContent = "Customer-id: " + cust_id++ + " | " + order.name + " - " + order.coffee;
+        orderList.appendChild(li);
+    }
+</script>
+</body>
+</html>
