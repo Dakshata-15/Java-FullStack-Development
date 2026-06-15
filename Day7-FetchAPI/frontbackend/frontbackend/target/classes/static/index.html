@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+</head>
+<body>
+
+<label>First Number : </label>
+<input type="number" id="n1">
+<br><br>
+<label>Second Number : </label>
+<input type="number" id="n2">
+<br><br>
+<button type="button" onclick="add()">Add</button>
+<h2 id="result"></h2>
+
+<label>Sin Number : </label>
+<input type="number" id="n3">
+<button type="button" onclick="sin()">Sin Value</button>
+<h2 id="result1"></h2>
+
+<label>Cos Number : </label>
+<input type="number" id="n4">
+<button type="button" onclick="cos()">Cos Value</button>
+<h2 id="result2"></h2>
+
+<label>Log Number : </label>
+<input type="number" id="n5">
+<button type="button" onclick="log()">Log Value</button>
+<h2 id="result3"></h2>
+
+<button type="button" onclick="spiral()">Spiral</button>
+</body>
+<script>
+    async function add(){
+        const n1 = document.getElementById("n1").value;
+        const n2 = document.getElementById("n2").value;
+        const response = await fetch(`http://localhost:8080/calc/add1/${n1}/${n2}`);
+        const text = await response.text();
+        document.getElementById("result").innerText=text;
+    }
+    async function sin(){
+        const n3 = document.getElementById("n3").value;
+        const response = await fetch(`http://localhost:8080/calc/sin/${n3}`);
+        const text = await response.text();
+        document.getElementById("result1").innerText=text;
+    }
+    async function cos(){
+        const n4 = document.getElementById("n4").value;
+        const response = await fetch(`http://localhost:8080/calc/cos/${n4}`);
+        const text = await response.text();
+        document.getElementById("result2").innerText=text;
+    }
+    async function log(){
+        const n5 = document.getElementById("n5").value;
+        const response = await fetch(`http://localhost:8080/calc/log/${n5}`);
+        const text = await response.text();
+        document.getElementById("result3").innerText=text;
+    }
+    async function spmat(){
+        const response=await fetch(`http://localhost:8080/sprialmatrix`);
+        const text=await response.text();
+        document.getElementById("logval").textContent=text;
+    }
+
+</script>
+</html>
