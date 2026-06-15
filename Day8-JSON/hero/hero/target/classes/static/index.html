@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hero</title>
+    <style>
+        .container{
+            align-content: center;
+            text-align: center;
+            padding: 20px;
+            margin: 50px auto;
+            width: 250px;
+            border-radius: 10px;
+            box-shadow: 0 20px 10px grey;
+            background-color: lightblue;
+        }
+        button{
+            padding: 15px ;
+            border-radius: 5px;
+            box-shadow: 20px 0 20px grey;
+
+        }
+        input{
+            width: auto;
+            height: auto;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius:5px;
+        }
+
+    </style>
+</head>
+<body bgcolor="#faebd7">
+<div class="container">
+<h1>Hero Registry</h1>
+<form id="heroForm">
+    Name:<input id="name">
+    <br><br>
+    Power:<input id="power">
+    <br><br>
+    <button type="submit">Add</button>
+</form>
+<h2>Heroes : </h2>
+<ul id="heroList"></ul>
+</div>
+<script>
+        const form = document.getElementById("heroForm");
+        const list = document.getElementById("heroList");
+
+        //Load heroes on page open
+        fetch("/heroes")
+            .then(res => res.json())
+            .then(data => data.forEach(h => addHero(h)));
+        form.addEventListener("submit", e =>{e.preventDefault();
+        const hero = {
+            name:document.getElementById("name").value,
+            power:document.getElementById("power").value
+        };
+        fetch("/heroes",{
+            method: "POST",
+            headers:{"Content-Type":"application/json"},
+            body: JSON.stringify(hero)
+        })
+            .then(res => res.json())
+            .then(h => addHero(h));
+            form.reset();
+        });
+
+        function addHero(hero){
+            const li = document.createElement("li");
+            li.textContent = hero.name + " : " + hero.power;
+            list.appendChild(li);
+        }
+</script>
+</body>
+</html>
